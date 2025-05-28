@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+int main()
+{
+    int choice;
+    float cash = 0;
+    char c;
+
+    do
+    {
+        printf("\nEnter:\n1. Withdraw\n2. Deposit\n3. Balance Check\n");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+        {
+            int withdraw;
+            printf("\nEnter amount to withdraw: ");
+            scanf("%d", &withdraw);
+
+            if (withdraw % 100 == 0)
+            {
+                if (cash >= withdraw)
+                {
+                    cash -= withdraw;
+                    printf("\nAmount after withdrawal: %.2f\n", cash);
+                }
+                else
+                {
+                    printf("\nInsufficient balance.\n");
+                }
+            }
+            else
+            {
+                printf("\nPlease enter amount in multiples of 100.\n");
+            }
+            break;
+        }
+
+        case 2: {
+            int deposit;
+            printf("\nEnter amount to deposit: ");
+            scanf("%d", &deposit);
+
+            if (deposit % 100 == 0) {
+                cash += deposit;
+                printf("\nBalance after deposit: %.2f\n", cash);
+            } else {
+                printf("\nPlease enter amount in multiples of 100.\n");
+            }
+            break;
+        }
+
+        case 3: {
+            printf("\nCurrent balance: %.2f\n", cash);
+            break;
+        }
+
+        default: {
+            printf("\nEnter a valid choice.\n");
+            break;
+        }
+        }
+
+        printf("\nTo continue press 'y', else press any other key: ");
+        scanf(" %c", &c); 
+
+    } while (c == 'y' || c == 'Y');
+
+    printf("\nThank you for using the ATM.\n");
+
+    return 0;
+}
